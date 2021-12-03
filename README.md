@@ -43,8 +43,9 @@ $ npm run dev
 
 Si usted no posee instalado la base de datos de PostgreSQL puede ejecutar el siguiente comando:
 
+$ docker-composer -up
+
 Nota: en el archivo docker-compose hay una sección que se llama environment, alli debera especificar las credenciales que va usar en su base de datos las mismas que usara en el archivo de variables de entorno.
-```
-docker-composer -up
-```
+
 Recuerde que, para que funcione, debera tener instalado docker en su computadora y debera de iniciarlo luego podra ejecutar el comando indicado.
+```
