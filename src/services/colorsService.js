@@ -1,4 +1,4 @@
-const moment = require('moment');
+const xml = require('xml');
 const Color = require('../models/Colors');
 
 class ColorService {
@@ -9,7 +9,7 @@ class ColorService {
     async createColor(body) {
         try {
             const consult = await this.color.create(body, {
-                fields: ['name', 'color']
+                fields: ['name', 'year', 'color', 'pantone_value']
             });
             return consult;
         } catch (error) {
@@ -17,14 +17,29 @@ class ColorService {
         }
     }
 
-    async getColors(limit, skip) {
+    async getColors(limit, skip, format) {
 
         try {
             let options = {
                 offset: this.getOffset(skip, limit),
                 limit: limit,
             };
+            
             let {count, rows} = await this.color.findAndCountAll(options);
+            let html = rows.map( row => {
+                const { id, name, color } = row;
+                const colores = {
+                    colors: [
+                        { color: [
+                            {id: `${id}`},
+                            {name: `${name}`},
+                            {color: `${color}`}
+                        ]}
+                    ]
+                };
+                return colores
+            });
+            
             rows = this.transform(rows);
             const result = {
                 previousPage: this.getPreviousPage(skip),
@@ -36,21 +51,42 @@ class ColorService {
                 data: rows
             }
             
-            return result;
+            if (format == 'xml') {
+                return xml(html, true);
+            } else if (format == 'json') {
+                return result;
+            }
         } catch (error) {
             return error;
         }
     }
 
-    async getColorsById(id) {
+    async getColorsById(id, format) {
 
         try {
             const consult = await this.color.findOne({ where: { id }});
-            return consult;
+            
+            const colores = {
+                colors: [
+                    { color: [
+                        {id: `${consult.id}`},
+                        {name: `${consult.name}`},
+                        {color: `${consult.color}`}
+                    ]}
+                ]
+            };
+            
+            if (format == 'xml') {
+                return xml(colores, true);
+            } else if (format == 'json') {
+                return consult;
+            }
+            
         } catch (error) {
             return error;
         }
     }
+
     getOffset(page, limit) {
         return (page * limit) - limit;
     }
