@@ -1,6 +1,6 @@
 ## Documentación donde estan todas las rutas del servidor
 
-[Postman](https://documenter.getpostman.com/view/7918195/UV5WDdLe)
+[Postman](https://documenter.getpostman.com/view/7918195/UVJhCZiG)
 
 ## Resumen
 
@@ -43,7 +43,8 @@ $ npm run dev
 
 Si usted no posee instalado la base de datos de PostgreSQL puede ejecutar el siguiente comando:
 
-$ docker-composer -up
+$ docker-composer up
+$ Ingreso: http://127.0.0.1/login?next=%2F
 
 Nota: en el archivo docker-compose hay una sección que se llama environment, alli debera especificar las credenciales que va usar en su base de datos las mismas que usara en el archivo de variables de entorno.
 
