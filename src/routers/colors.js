@@ -5,8 +5,10 @@ const { validatorFields } = require('../middleware/validatorFields');
 const router = Router();
 
 router.post('/', [
-    check('name', 'The name is required').not().isEmpty(),
-    check('color', 'The code hexadecimal of code is required').not().isEmpty(),
+    check('name', 'El nombre es requerido').not().isEmpty(),
+    check('year', 'Debe colocar el año').not().isEmpty(),
+    check('color', 'Se debe ingresa el codigo hexadecimal').not().isEmpty(),
+    check('pantone_value', 'Este valor es requerido').not().isEmpty(),
     validatorFields
 ], ColorsController.createColors);
 router.get('/', ColorsController.getColors);
