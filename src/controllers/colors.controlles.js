@@ -26,11 +26,18 @@ class ColorsController {
         try {
             const limit = parseInt(req.query.limit);
             const skip = parseInt(req.query.skip);
-            const result = await ColorService.getColors(limit, skip);
-            return res.json({
-                state: true,
-                result
-            })
+            const format = req.query.format;
+            const result = await ColorService.getColors(limit, skip, format);
+            if (format == 'xml') {
+                res.set('content-type', 'application/xml');
+                return res.send(JSON.stringify(result));
+            } else {
+
+                return res.json({
+                    state: true,
+                    result
+                })
+            }
         } catch (error) {
             console.log(error);
             return res.status(500).json({
@@ -43,11 +50,18 @@ class ColorsController {
     async getOneColor( req = request, res = response) {
 
         try {
-            const result = await ColorService.getColorsById(req.params.id);
-            return res.json({
-                state: true,
-                result
-            })
+            const format = req.query.format;
+            const result = await ColorService.getColorsById(req.params.id, format);
+            console.log(result);
+            if (format == 'xml') {
+                res.set('content-type', 'application/xml');
+                return res.send(JSON.stringify(result));
+            } else {
+                return res.json({
+                    state: true,
+                    result
+                })
+            }
         } catch (error) {
             console.log(error);
             return res.status(500).json({
