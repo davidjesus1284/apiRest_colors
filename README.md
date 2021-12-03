@@ -8,16 +8,16 @@ Esta aplicación esta realizada para la creación y uso de colores y su implemen
 
 ## Framework y paquetes utilizado
 
--. express
--. express-validator
--. sequelize
--. pg
--. pg-hstore
--. xml
--. morgan
--. cors
--. cross-env
--. dotenv
+- express
+- express-validator
+- sequelize
+- pg
+- pg-hstore
+- xml
+- morgan
+- cors
+- cross-env
+- dotenv
 
 ## Instrucciones para su configuración
 
@@ -27,11 +27,11 @@ $ npm install
 ``````````
 Debera crar el archivo .env.development y colocara la siguiente informacion:
 
-PORT=3000
-DB=XXXXXXX Nombre de la base de datos
-USER_DB=XXXXXXXX Usuario de base de datos
-PASSWORD_DB=XXXXXXXX Contraseña de base de datos
-HOST_DB=localhost Host local a la que se conectara la base de datos
+- PORT=3000
+- DB=XXXXXXX Nombre de la base de datos
+- USER_DB=XXXXXXXX Usuario de base de datos
+- PASSWORD_DB=XXXXXXXX Contraseña de base de datos
+- HOST_DB=localhost Host local a la que se conectara la base de datos
 
 ## Comenzar la aplicación con el siguiente comando
 
