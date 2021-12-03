@@ -33,6 +33,16 @@ Debera crar el archivo .env.development y colocara la siguiente informacion:
 - PASSWORD_DB=XXXXXXXX Contraseña de base de datos
 - HOST_DB=localhost Host local a la que se conectara la base de datos
 
+## Explicación de rutas
+
+En la ruta /api/colors/1/?format=json se obtine un color por id y le puedes indicar en cual formato quieres si es json o xml hay param query que se llama format donde especificas el tipo de formato
+
+En la ruta /api/colors?limit=3&skip=1&format=xml se obtiene todas las listas paginadas de la siguiente manera:
+
+- limit: Indicas cuantos objetos vendran de la base de datos
+- skip: Aca se indica la pagina que va a visualizar
+- format: El tipo de formato que desea json o xml
+
 ## Comenzar la aplicación con el siguiente comando
 
 ```bash

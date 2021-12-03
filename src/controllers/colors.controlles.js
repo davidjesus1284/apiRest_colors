@@ -30,7 +30,7 @@ class ColorsController {
             const result = await ColorService.getColors(limit, skip, format);
             if (format == 'xml') {
                 res.set('content-type', 'application/xml');
-                return res.send(JSON.stringify(result));
+                return res.send(result);
             } else {
 
                 return res.json({
@@ -52,7 +52,6 @@ class ColorsController {
         try {
             const format = req.query.format;
             const result = await ColorService.getColorsById(req.params.id, format);
-            console.log(result);
             if (format == 'xml') {
                 res.set('content-type', 'application/xml');
                 return res.send(JSON.stringify(result));
