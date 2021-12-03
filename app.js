@@ -4,4 +4,4 @@ const port = process.env.PORT;
 
 const client = Server.listen(port);
 
-module.exports = { client };
+module.exports = { client, server: Server };
