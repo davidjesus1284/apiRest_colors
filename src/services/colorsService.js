@@ -71,7 +71,9 @@ class ColorService {
                     { color: [
                         {id: `${consult.id}`},
                         {name: `${consult.name}`},
-                        {color: `${consult.color}`}
+                        {year: `${consult.year}`},
+                        {color: `${consult.color}`},
+                        {pantone_value: `${consult.pantone_value}`}
                     ]}
                 ]
             };
